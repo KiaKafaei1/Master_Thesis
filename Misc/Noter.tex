@@ -1,0 +1,625 @@
+\section{Noter}
+\subsection{Noter til Paper}
+Trying to solve “Accurate and efficient indoor path planning” since a lot of 
+people uses indoor walking. There are challenges with indoor navigation.
+\\\\
+Industry Foundation Classes (IFC)
+Semantic information in BIM models
+Revit
+Triangular prism subdivision
+Geometric and semantic information
+2D grid subdivision and 3D space subdivision based on triangular prism.
+How about if you use variable sizes of grid, depending on the rooms.
+
+
+\subsection{Noter til master these: Pathfinding in Two-dimensional
+Worlds }
+
+You can represent the 2D world in 2 ways, as a 8-grid system and a polygonal way. 
+The problems with the grid system are suboptimal path length and the problem of choosing a fitting grid resolution.
+
+Polygons works by connecting each portruding corner and making a connection graph.
+
+A* works on graphs and grids
+JPS (jump point search) works on grids only, and is good for large areas of open space.
+
+HPA is also a good algorithm for grid systems but is not necessarily optimal. At most 1\% worse than optimal. 
+Makes use of preprocessing, and clusters the map and makes a graph of higher abstractions such that it gets an overview 
+of the overall structure of the map before doing the pathfinding.
+A fitting cluster size is also of importance for HPA* as we saw in the Scaled Maze map.
+
+VG (visibility graph)
+is an algorithm that works on polygonal maps.
+
+
+
+\subsection{Noter process og generelle tanker}
+\subsubsection{Rapport tanker}
+Rapporten består af undersøgende arbejde og er vigtigere end implementationen.
+Rapport bliver vurderet på diskussion.
+Man kan gøre det på mange måder.
+Ulempen ved connectivitet er at man ikke kan se væggene. Graph måden.
+Find så mange metoder som muligt og skriv hvorfor de andre er dårlige.
+Det viser at du har tænkt dig.
+Rapport stuff: for og imod forskellige implementationer.
+Kriterie liste med fordele og ulemper.
+Undersøg begge veje, og argumenter.
+Undersøg på papir og læs dig frem til det. Skriv for og imod for begge.
+Læs en masse artikler, og skriv alle tanker omkring det.
+
+\subsubsection{Ugentlige rapporter}
+Hvad skete I den forgangne uge, hvad har været nogle problemer.
+Ugerapport der beskriver status.
+Skriv nogle noter til jer selv.
+Små tekst stumper
+Trello planlægning, to do liste
+Include figures and bibtex and notes.
+
+
+\subsubsection{Brainstorm}
+Lav en meget præcis liste med ting du skal have gjort så du altid har noget at lave.
+Brug en time på det i to doist.
+
+Hvad skal jeg gøre i sidste ende?
+Robotten skal kunne bevæge sig fra punkt til punkt i en bygning mens den tager billeder på en etage. Den skal have en strategi til hvordan den går rundt og hvordan den undviger forhindringer.
+
+En meget overordnet planlægning af hvordan du kommer systematisk rundt i en bygning, så den kan blive scannet.
+Denne opgave behøver ikke være så geometrisk. Du kan egentlig se en bygning som en graf, hvor hver knude svarer til et rum.
+
+Det andet element er at komme rundt i de enkelte rum og gå fra rum til rum på en hensigtsmæssig måde.
+How to compare different methods?
+
+\section{Svar på spm}
+\subsection{Skal jeg skrive i passiv eller aktiv form?}
+The project is being worked on in collaboration with...
+I am working on the project in collaboration with…
+\\\\
+Brug aktiv form. En gang på siden bruge “I”.
+Som regel inkluderer man læseren og bruger “We”, hvis det er noget du har lavet så “I”.
+Tit bruger man ikke personer som subjekt.
+Brug mest aktiv, der må gerne være lidt passivt.
+
+
+Gulv areal hvert pixel bliver et grid punk. Skyd en email hvis du løbetr ind i problemer.
+Unity reflect det der oversætter bim modeller til unity. Hen ad vejen måske.
+Ray trace bim model der kunen hjælpe med at finde ud af fra et punkt til et andet.
+
+
+
+\subsection{Thesis noter}
+Explain the fundamental problems which will be the background of your theses.
+Maybe build it up as a story.
+Say not what you are going to do but why.
+Start with the why. Elevator pitch in the first section.
+Remember that you are writing with human beings. Have a good flow. Have 1.5 months for report writing.
+Nudge people into the topic and not straight into it.
+
+Related works doesn't have to be detailed.
+Theory of the things you use is background
+Present papers in related work, provide an overview of the theories briefly.
+Background is only theory on what you have implemented.
+Related might be after background.
+More than 5 references, have as many as possible.
+How long the report, write more background if bad contribution, more report.
+The reader should not have a burning question.
+Be very explicit about the scope of the report.What will you not go into.
+
+Method is about what you have done yourself, no matter what you have followed, make proper citation 
+You can also have a little introduction paragraph, saying you are following this method.
+Have implementation section, the tools, the computer used.
+
+How to show the results?
+How to make results?
+What results could you present that support that you finished the project.
+Google sheets
+
+All the timer consider getting credit for what you did
+Get more credit by discussing the way you got there. Some of the considerations you made and the issues you solved.
+Explain how you ended up with the final product and why?
+By extending the method section.
+
+We can get a quick readthrough of the report but not a detailed read
+
+General rule is that the citation should not be as nouns.
+Use the name of the reference, and then cite.
+Write the name of author and the year not the name of the paper. Typically.
+How much in appendix all code or just link to github?
+Rule of thump have small code snippets in the actual report if it is important. It is fine in the appendix just have the link to the github repository.
+
+30 min presentation
+15 min spm 
+Fremlæg om oversigt over dit projekt
+Introducer projektet og motiver det
+Forklaring af metode
+Vis nogle af resultaterne 
+Du kan bruge resultaterne til at beskrive metoden.
+Du kan godt flette de to ting sammen.
+oversigt
+Husk at have afhandlingen med i pdf
+Forbered slides til spørgsmål du tror vil komme.
+Hvilke regler i forhold til regler? 
+
+analyse,design og implementering i software projekter.
+Analyse: Hvad har du til rådighed?
+Hvad kan jeg bruge til at forbedre på det.
+
+implementering: kode og algorithmer. Mest bare for vigtige detaljer omkring hvordan du har implementeret ting.
+
+As stated in [McAuthorson, 1989] foo is bar. Dette er den bedste måde at gøre det på.
+
+
+Generaliser lidt ud over Dalux, så det ikke tager udgangspunkt i Dalux.
+Formuler nogle punkter med antagelser for den floorplan. 
+En liste med krav jeg stiller for at programmet kan håndtere det.
+
+
+Det er meget vigtigt for din rapport at du får skilt problem stillingerne ad, evt. skriv en mail til andreas hvor han kan uddybe det på skrift.
+
+Jeg tænker det umiddelbart som om at du skal lave en skilning mellem at det at tegne figuren og datastrukturen og graph theorien der ligger bag. 
+
+
+Få akademiske citater er et problem, akademiske reference er vigtige og man taber point på det.
+
+Heller noget i rapporten som ikke er perfekt, men du kan stadig få lidt kredit for det. Skønhedsfejl er okay
+
+I rapporten skal du gøre klart hvordan du har ændret cad tegningen. Du behøver ikke bruge alt for meget energi på det nu. Det er ikke et interessant problem.
+Man kan ændre problemstillingen så den passer med resultatet.
+inledning er godt have synosis.
+Software projekt. Indledning,  Analyse,  design, implemantation
+
+Analyse: Hvis jeg skal løse problemet med noget software, hvad kan jeg så finde i litteraturen og forskellige værktøjer.
+Design: Forklar hvordan softwaret skal designes for at løse 
+Implementation: Detaljer om implementation
+
+Software der kan løse problemet analyserer værktøjer, 
+design: ud fra analysen forklar hvordan software skal designes 
+implementation: detalje omkring implementation.
+Test, resultat. Diskussion og konklusion.
+
+ANALYTISK og ikke syntetisk i tilgang.
+Det er ikke en log, hovedpersonen er problemet du skal løse, du skal angribe det som en detektiv. 
+
+Man får mere credit af at gøre få ting grundigt istedet for mange ting rodet. 
+Projekt planen skal være dynamisk.
+relatere oprindelig plan til hvad der skete, appendix med arbejdsprocessen.
+
+Hvad er cad modeller og robotten.
+Giv en kontekst.
+Hvorfor er vi interesseret i at løse problemet.
+Ikke dokumentation af programmet. Censor vil i dette tilfælde ikke forstå hvorfor du gør hvad du gør.
+Gør det hele til en samlet historie, rød tråd og fremhæve hvor du har fundet gode løsninger.
+Du er ikke hovedpersonen, problemet er hovedpersonen. 
+Beskriv erfaringerne som en detektivhistorie. 
+Sporene i historien.
+At lægge en analyse frem.
+Hvad skal jeg prøve på løse og hvorfor -> Hvad har jeg til at løse det -> Hvad er så de rigtige løsninger.
+Det kan godt være det kommer i en anden tidslig rækkefølge end det du har gjort. 
+
+
+
+\subsection{Uge 7}
+Figure out exactly whats going on with data.
+It seems that it is mixing up axis.
+Switching x,y for the doors
+RAC look into the building 
+Study the format and file
+send code and description to andreas, also useful for report.
+
+What I want to do is to remove all doors that are not connected to a wall. To do this I am going to find the distance for each point to all the walls (might change this to closest walls). Since I only have the coordinates and not the lines what I am going to do is to make a triangle including the two points of the line and the third point being the door node. I am going to find the length of each side of the triangle. Using Herons formula I will find the area, and knowing the area I will find the height of the triangle. The only issue is that the distance from the point to the line is not always equal the height of the triangle. The distance could be longer - not shorter though.
+
+Sagen er den at RAC bygningen er ikke en bygning der eksisterer i virkeligheden (ihvertfald ikke I Danmark). Jeg har fundet 3D modellen af bygningen, hvor vægge dog ikke er inkluderet. Jeg tænker at få simuleringen til at fungere på en simpel udgave af bygningen og derefter arbejde på noget mere komplekst pathfinding. Først vil jeg dog plotte dørene.
+
+\subsection{Uge 8}
+Remove the doors that are floating, make the synthetic data clean
+Find a way to place corners, start with manually placing corners, find an algorithm later in the project.
+Go back later on, generally you should have a working implementation before fiddling with the  different things.
+One way to implement the radius of the robot is to make all the walls thicker and keep the point as is.
+
+\subsection{uge 9}
+Not likely scenario 
+Discuss with Dalux advisor 
+Thicken walls with radius
+Distance fields with radius
+Distance fields, compute distance to closest wall
+sample distance field and check for radius
+Discretize the entire scene, for every point calculate distance to closest wall
+Image of distance field which we can sample
+spent time writing for thesis the obstacles in a more general, high level problems
+find function for point line segment distance 
+easy to debug
+
+\subsection{10}
+Diskretisere selve ruten
+Find nærmeste væg 
+KDtrees datastruktur 
+litteratur på datastrukturer
+case med ustabilitet
+lav test setup
+Diskretisere rummet med kasser
+raytracing på punktet
+Tradeoff mellem skanningspunkter og afdækning
+tænk over corner nodes
+Behæver ikke tænke på loxalization lige nu
+Tag hensyn til søjler når du scanner 
+Tænk over kasser i rummet problemet
+
+En optimal strategi kunne være at placere midt i rummet og tage billeder dér.
+
+Find en måde at autogenere rum noder som er placeret midt i rummet
+
+Læs op på slam og hvordan det fungerer.
+
+Find en måde at autogenerere corner nodes.
+
+Behøver robotten localization hvis vi giver den en map?
+
+Lave autogenerering af ønskede noder.
+
+Pros and cons: 
+Distance field:
+- Fordelen ved at lave et diskret distance field er, at du kan udregne det væg for væg, og når du er færdig, så kan du bruge det - og det er lynhurtigt at slå op i et billede.
+
+Diskret rute:
+Pros:
+- Bemærk dog at du ikke behøver at beregne afstanden med fast interval i alle tilfælde. Hvis nu robottens radius er 0.5 m og der er 10 m til nærmeste væg, så kan robotten jo bevæge sig 9.5 m før den rammer noget. Det kan gøre det hele lidt hurtigere.
+- Jeg ville mene at det letteste var bare at have en masse punkter og så bruge afstandsfunktionen til at teste om robotten kan komme fra et punkt til et andet punkt ved at gå i lige linje.
+Cons:
+- Hvis du laver en funktion, der finder afstanden, så skal du enten løbe alle vægge igennem, hver gang du ønsker at finde afstanden - eller du skal have en datastruktur, der gør at du hurtigt kan finde den nærmeste væg. Det første er let nok men kan blive tungt hvis du har virkeligt mange vægge, og det andet tilføjer lidt kompleksitet.
+
+
+I think I can drop the idea of corner nodes.
+
+The idea in general is to implement the route in such a way that it first check if route is traversable if not it moves 90 degrees in either direction. It checks again and goes back and moves 90 degrees in the other direction and keeps checking until it finds a traversable path. It then finds the distance to the nearest wall (minus the radius) and walks that amount in a straight line towards the end node. It then moves a bit 90 degrees and sees if the distance to the nearest wall is decreasing or increasing.
+
+It might be easiest to do discretization and do A* algorithm.
+
+
+Can I avoid corner nodes?
+Place the corner nodes a certain distance from the corner, equal to the radius.
+
+We have to save the vector if we want to turn 90 degrees.
+The vector is just the difference in y coordinates and the difference in x coordinates.
+The amount we go left and right is the amount of distance to closest wall.
+
+Does this way of thinking work?
+I think it works in 99 \% of scenarios but we will have to think of scenarios where this doesn't work.
+
+What do we need to make this implementation work?
+
+There are 2 types of obstacles, the ones we know before hand and that we can plan for.
+And then there are the ones that we don't know about random chair in the room etc.
+For now we are only solving for the obstacles that we do know about.
+Maybe it is okay that it only works 99\% of the time.
+
+Another way is to make it keep going right until it finds a direct path to the end node.
+It should only do this when it has tried the first algorithm and that doesn't work.
+
+There are no scenarios where the combination of these two algorithms don't work.
+Given the assumption that there is a direct (not straight/linear) path between the 2 nodes.
+
+How to make the discrete route 100\% correct.
+
+\subsection{11}
+It is an active research area
+Quite a bit of litteratur 
+Read  the papers that Jeppe sent
+One is about beloney tiangulation where it triangulates the entire area
+Switching algorithm to A star
+Keep only the second algortihm and remove the first algorithm
+Local geomtry investigation
+Keep the discussion for the report
+Keep A*
+This is not a navigable part, split and go in both directions
+Split the robot in 2 and check in paralellel. You will get a tree.
+Stopping criteria  will be a certain distance before giving up
+Keep the distance field in the report
+All the features should be discussed. 
+
+This solution does not work very well do to the fact that sometimes you can walk through walls and sometimes you can't. When you are a door node you can walk through walls and when you are not a door node you can not walk through walls. Basically when the distance is small enough you can walk through the walls.
+A solution for this would be to tell the algorithm if there is a door between the room nodes then go to it first.
+Doing a distance field and discretizing it will give a much more elegant and simpler solution and might be better when I in the future want to do optimal placement of room nodes.
+The issue now is that lets say you want to walk from a to b and there are an obstacle in the way. You could of course discretize the route such that you could get there, but what if you can't get there.
+99\% of the time we are not talking about obstacles but about walls and therefore doing this a star kind of algorithm does not seem to be a good solution because there will not be an available route a big chunk of the time, because we often are going from room to room. 
+
+A third way is to follow the same scheme as has been done so far and only rely on corner nodes and door nodes to go from node to node. This should in theory work and should only not work when we have a straight path that is too narrow. 
+How should the distance field approach work with my current implementation?
+We place randomly placed room nodes and we want to go through all room nodes. 
+
+We split the grid in walkable cells and non walkable cells. The cells near door nodes will be walkable.
+We can still use dijkstra's algorithm to find the shortest distance between each room node, but A* is more cost effective.
+They both give optimal solutions.
+I probably don't need to check for line intersection anymore? Since I can just say that all door nodes are traversable.
+
+What if the door nodes don't fit in the grid system, we can not just round the door down to the nearest cell, since that would change the placement of the door.
+
+Right now I use dijkstras algoritm because it was straight foorward to use with the networkx framework
+I should probably switch that to an A star approach in the future since it is faster. Are stuff that optimize time worth looking into now? since it is basically all precomputed so 
+time will not be that important of a factor.
+
+
+
+So what should the algorithm do:
+
+The way it should work is that we have a start node and an end node. The robot wants to go from the start node to the end node. The robot walks toward the end node until it hits an obstacle or the path is too narrow. It then splits in 2 direction one going right and the other left.
+
+Basically just implement the A* algortihm I think that is the right way to go about it.
+We could also discretize the map every time we run into problems.  90 percent of the time it will be a smooth walk from one end to another. When there are obstacles ahead we discretize and implement A*. 
+
+The robot is only 50 cm in width and 110 cm in length. I don't think we will run into a narrow path problem since most buildings are meant for humans and the average
+human width for men is 41 cm according to  https://www.healthline.com/health/average-shoulder-width#why-we-measure. The method for measurement may wary.
+I just use 50 cm as radius to be on the safe side.
+
+My plan now is to:
+- Implement the second algorithm which will be a form of A* algorithm
+- Skim the two papers that Jeppe sent
+- Do parallel checking with the robot
+- Do a discussion in the report, keep the distance field in the report
+- Implement a stopping criteria after a certain distance
+- Place corner nodes a certain distance from wall
+- Lets give the robot a radius of 50 cm
+
+
+\subsection{12}
+You should try to tell a particular story. But also be open with your data.
+Be very preceise what you are trying to achieve 
+you need a graph 
+Floorplan to graph is important
+Once you have a graph and planning the movement will be a graph problem.
+You know when you have visited the entire floorplan.
+Seperations of concerns it is hard to know when you have fixed the problem
+Think of it as just creating a graph
+If all the rooms were convex
+Scalability is not a problem
+Another simple thing is to randomly place nodes
+The distance field problem is a lot of nodes.
+Convex decomposition 
+Decomposs each room into convex shapes.
+Be super precise by first making a graph such that you are sure that it is physically realisable
+Not much much bigger than necessary
+What properties are needed for the graph
+It comes down to precision, we haven't made quite precise.
+It should find a path 99% of the time.
+The problem is to find a path where you are sure the robot can walk around the building.
+The problem with the corner node is there could be an obstacle where the corner node is.
+Backtrack and ask yourself waht do you need from the algortime.
+Find placement of nodes
+And how should they be connected.
+You don't need optimal solution.
+Random placement.
+Make a list of possibilities.
+convex decompomposition.
+
+optimality is not important, completness is important.
+BSP tree
+Hierachil decomposition of space
+hiearachy of bounding boxes
+
+
+\subsection{13}
+Hvilken sekvens af problemer du vil løse.
+Helt klar struktur i metoden.
+
+Since we only want to split the nodes into boolean field and not necessarily interested in the distance to the closest wall. 
+We can use the information to speed up the process of doing the distance field.
+
+
+
+- R-trees are faster than Quad-trees for Nearest Neighbour queries while for window queries, Quad-trees are faster than R-trees.
+
+
+
+So basically what I have to do is think of the problem as a graph with nodes. I should ask myself the questions where should I place the nodes and how should they be connected.
+This way you know when you have visited the entire floorplan.
+I have 4 different possibilites:
+Distance field
+Convex decomposition
+Random placement of nodes
+Corner nodes
+A star discrete route algorithm
+They all have their limitations and advantages. 
+I therefore have to be very clear and precise in what it is I am seeking. 
+Am I seeking path optimality or am I seeking path certainty.
+Am I seeking fast performance that works 99% of times or slow performance that work 100% of times.
+Scalability is not really an issue because you are not even processing in real time.
+
+The problem is to find a path where you are sure the robot can walk around the building.
+The problem with the corner node is there could be an obstacle where the corner node is.
+
+We don't need optimal route.
+
+Brug i dag på at finde ud af hvilken af de 5 implementationer du vil vælge. 
+Måden du gør det på er ved at skrive om dem alle 5, og evt. researche dem.
+
+Basically convex decomposition and protruding corner nodes are very similar because they each provide a node in the intersection 
+between the convex subparts of the non convex rooms.
+
+Random placement of nodes?
+I don't really think it is a good way of doing it and in general it is similar to the a star algorithm
+
+
+Lets have the assumption that all the room nodes are placed in such a way that they are a good distance away from the nearest wall and
+that we have corner nodes such that any two nodes in a room can be connected. 
+Now there are only two issues that need to be taken care of.
+1. A narrow path
+2. Obstacles in the way such as a pillar (obstacles we can see from the floor plan)
+3. Obstacles that we can not see from the floorplan and that are large on a non trivial level.
+
+Neither convex decomposition or protruding corner nodes have good ways to deal with these challenges
+
+A star algorithm?
+One of the problems with the a star algorithm is that it may run into a case of instability.
+
+It is when computing the distance that it takes too long time
+
+
+\subsection{14}
+2 Knuder kan kun forbindes hvis de svarer til punkter i samme rum eller hvis det er den samme dør til den samme dør.
+
+Skil problemerne ad og behandl dem enkeltvis
+
+En dør skal repræsentere en portal i et rum.
+Brug den information du har. Se om du kan huske at de kommer fra samme dør.
+
+
+robot problem
+gå rundt i bygningen 
+konstruere grafen
+
+Problemet er at tegne grafen vær explicit med det.
+Før vi tænker på hvordan vi bevæger os rundt, skal vi generere en god graf. Det skal være muligt at beregne stien udelukkende ud fra grafen.
+Når jeg laver grafen skal jeg derefter også tage stilling til robotten.
+Lav flowchart over programmet.
+Data beskrivelse.
+Fokuser på data i hvert skridt af algoritmen.
+Kasser og pile og hvad er input ouput. Eller bare en text beskrivelse.
+Løse delproblemer uafhængigt.
+Det at lave stien består af flere problemstillinger.
+Brug næste uge på at dele det ned til trivielle problemer. 
+Brug hele næste uge på at forklare problemstillingen så de forstår det. Del det ned i små trivielle problemstillinger.
+Evt skriv en masse sider rapport hvor du gennemgår det.
+
+
+\subsection{15}
+Jeg ved ikke hvordan programmet kan finde ud af om et givet punkt er indenfor eller udenfor rummet. Den information man får er linje koordinaterne som danner rummet.
+
+Man kunne tjekke alle de yderste vægge af bygningen og se om der er en dør og hvis der er skal den fjernes.
+
+For hver dør skal du tjekke om den er udenfor eller indenfor bygningen ved at bruge algortihmen der viser om en node er indenfor eller udenfor bygningen. Det du skal gøre er at du skal tjekke begge retninger. 
+https://www.geeksforgeeks.org/how-to-check-if-a-given-point-lies-inside-a-polygon/
+
+
+SÅ det andreas mener er at der er en graf som inkluderer en hel masse knudepunkter, det er en diskretisering af space/rummet. Det er den man bruger til at finde A* star mellem de forskellige rum noder. 
+
+Dernæst er den en mere overordnet graf der inkluderer færre knudepunkter og som er fuldt forbundet.  De inkluderer kun rum knudepunkterne. Det er den man laver MST på og derefter TSP.
+Faktisk er den ene graf en sampling af den anden hvor man kun sampler rum knudepunkterne.
+
+Jeg er glad for at vi er på samme bølgelængde nu, vi kan nu snakke om de forskellige små problemstillinger jeg stødte ud fra et bedre standpunkt.
+Synes du så ikke det er relevant med optimal knudepunktsplacering. Lige nu er det bare placeret centralt.
+Det du skrev er det noget jeg skal skrive i problemformuleringen? Eller er det bare en måde at strukturere rapporten på. Skal jeg sige at jeg vil løse opgaven ved Cad->grid graf-> rum graf-> TSP.
+
+
+
+Der er en del udfordringer før at hele programmet kan køre automatisk på alle CAD modeller uden nogen form for manuel manipulation.
+- Søjler. EDIT: Dette er faktisk et non issue fordi rum knudepunkterne i søjlerne vil blive fjernet når de ikke kan forbindes til resten af knudepunkterne.
+- Dørene til udenfor i det specifikke scenarie vist i rapport 15
+- At hvis der ikke er forbindelse til alle rum ifølge tegningen så vil man ikke kunne tilgå rummet. Dette kan ske som et resultat af diskretiseringen af dør knudepunkterne.
+- At vælge antallet af rum man skal inkludere i tegningen og grafen. Lige nu stopper jeg efter 30 rum.
+- At døre der er lige ved siden af hinanden kan tilgås fra siden istedet for a gå tilbage og så ind igen. Se rapport 14.
+
+Ny projekt beskrivelse som involverer denne opdeling.
+
+Hvad er det mest central placeret rum knudepunkt.
+
+Hvis en indre gård så tillad robotten. Snak også om den generelle metode hvor ulige vægge er indenfor rummet og lige vægge er udenfor rummet.
+
+Lav en synopsis hvor du ikke nævner optimale knudepunkter eller antallet af knudepunkter.
+
+Løs problemet med antal rum først. Spørg dalux om problemstillingen og hvordan cad modellen skal fortolkes. Start med at kigge på cad modellen og find ud 
+af hvordan du kan løse problemmet med antallet af rum ud fra html filen.
+
+Løs problemet med tilgængelighed som et resultat af diskretiseringen af dørene.
+
+1. lav ny synosis hvor denne opdeling er en del af det. Nævn ikke optimal knudepunkter
+2. Lav algoritmen som vist i rapport 15.
+3. Løs problemet med antallet af rum.
+	- Start med at kigge på cad modellen og html filen og kom med nogle ideer.
+	- Skriv til Dalux omkring et møde hvor du forklarer om problemstillingen, spørg om personen der har lavet cad filen kan være med. Her kan du også nævne synopsen.
+4. Løs problemet med tilgængelighed af rum knudepunkterne som et resultat af diskretiseringen af dørene. 
+
+\subsection{16}
+
+
+To do til næste uge
+1. Lyt til mødet igen
+2. Fix/forstå det med Dic all, måske får du en bedre forståelse med antallet af vægge
+3. Fix udfordringen med diskretisering af dørene ved ikke at diskretisere dem. Sådan at du kan garantere at den kommer ind i alle rum. Det kan være alle rum med døre. Det har ikke stor værdi at grafen er helt reguler.
+4. Lav din synopsis om, sådan at den inkluderer de ændringer i snakkede om til mødet.
+5. Skriv til Dalux omkring flere bygninger.
+6. Læs Master rapport slidsne fra Andreas og Jeppe og skriv nogle spørgsmål til.
+
+\subsection{17}
+rum label til knudepunkterne 
+ikke geometrisk hvis du har semantisk
+rapporten skal afspejle om 5x5 er nok 
+tykkelsen af væggen skal lave nogle antagelser. 
+Du burde kunne beregne mindste søgeradius
+gør det uafhængigt af søgeradius
+ved at have rum labels.
+
+Find andre bygninger på DTU
+Bygning 324 cad modellen for den
+
+Jo mere test er generelt bedre, mange og komplicerede bygninger.
+Test viser at program gør det du siger det skal gøre
+https://use.mazemap.com/#v=1&zlevel=1&center=12.521052,55.784539&zoom=14.2&campusid=89
+Implementations  afsnit specifikke data, hvad for et format er det.
+Maze map api.
+Finde en datakilde.
+Finde dit input og find kilder der tager dit input.
+Problem med placering af rum knuderne i rapporten.
+
+\subsection{18}
+DXF file
+
+Convex decomposition
+One way to do it is by using the poly-decomp library
+Poly decomp library virker ikke
+Jeg laver min egen algorithm baseret på det de skriver i wayfinding dokumentet.
+
+There are some challenges with the convex decomposition:
+It is great if we can make the convex area a triangle
+The definition of convex is that any two points inside the convex area is connected.
+
+Semantisk information: rum labels
+For at løse problemet med rum labels skal man besvarer 3 spm:
+1. Hvordan finder jeg ud af om knudepunktet er inde i rummet, givet at jeg har information om væggene rummet består af?
+Svaret er convex decomposition. Og dette kunne også være en god ide senere hvis jeg skal lave optimal knudepunkts placering.
+2. Hvordan traverserer jeg til det nærmeste knudepunktet?
+Svaret er spatial datastructure. Find og implementer den mest passende datastruktur til knudepunkterne.
+3. Hvordan finder jeg ud af hvilken dør der er problemet?
+Det er den dør der er inde i rummet.
+
+
+
+Før jeg tjekker connectiviteten af rum knudepunkterne skal jeg tjekke forbindelse mellem rum knudepunkt og dør knudepunkt indenfor det samme rum.
+
+Jeg er ikke sikker på at jeg behøver at tjekke connectiviteten af rum knudepunkter, i så fald skulle det kun være for knudepunkter der er udenfor bygningen og andre mærkelige knudepunkter placeret steder hvor der ikke er døre som kan tilgå dem. Jeg burde nok gøre det bare for at være sikker på at programmet kan gøre. Jeg kan også kalde en error hvis det sker hvor jeg siger at et knudepunkt er blevet fjernet men at programmet stadigvæk kører.
+
+Brug noget tid på at skrive en rapport hvor du udfolder alle dine tanker.
+
+Geometrisk information:
+Jeg skal for alle døre tillade at de er forbundet til de nærmeste 5x5 knudepunkter.
+Senere hen skal jeg lave en analyse af væggene og tykkelse og komme med en minimum søgeradius for døren.
+Denne løsning bygger på flere antagelser.
+
+Jeg foretrækker semantisk information metoden fordi at mange af de ting der skal gøres er gode at have med i fremtiden og skal gøres alligevel. Det er en mere generel løsning og bygger på færre antagelser. Det er også en mere robust løsning. Det gør også bedre brug af information de semantiske informationer der er givet.
+
+Implementering:
+Det du skal have gjort for at få Semantisk information metoden til at virke er følgende:
+- Lav en convex decomposition af rummene
+- Lav en spatial datastruktur af rum knudepunkterne
+- Tjek forbindelse mellem døren/portalen i rummet og rum knude punktet/punkterne
+
+What does it take to solve the issue of doors connecting to nearest neighbour inside the room?
+
+After I remove nodes near the walls, (and before I remove door nodes that are outside the building) I check for each door whether or not it is connected to more than one other node. If it is only connected to the 1 other node it means that it is only connected to its complementary door. In this case the program should connect the door to the nearest node that is not crossing a wall. I need a spatial data structure for the nodes.
+
+
+- Få overblik over IFC formattet og skriv en side om det i rapporten.
+- Skriv omkring tradeoff mellem at lave din egen loader og ifc loader, skriv her rationalet om at du har lavet din egen loader da den er skræddersyet til Dalux' dataformat. I discussions afsnittet kan du så skrive at hvis andre skal kunne gøre brug af det, kræver det lige at man bruger ifc open shell loader.
+
+\subsection{19}
+Lav om på algoritmen så den hviler på et fast teoretisk grundlag, brug winding number i stedet for at kigge i 4 retninger
+Du må gerne skrive rapporten på den måde du tænkte på at skrive den.
+husk referencer
+Antagelse at rum er lukket polygon
+Indledende kapitel 
+
+\subsection{20}
+Mail fra Andreas:
+Jeg synes du på en eller anden måde skal gøre dine rum til simple polygoner. Forstå hvorfor dine rum har de der ekstra vægge. Måske der er en måde at skelne mellem den indre og ydre væg. Ellers er rummet jo to polygoner og så smider du bare den lille væk: det er jo hulrummet mellem væggene. Men vær først sikker på at du forstår hvad der sker i filen.  Måske den indeholder al information du skal bruge. Måske ikke :-)
+
+Lige nu laver jeg manuel behandling af antallet af rum og også fjernelse af specifikke vægge.
+
+Det virker som om at hvert rum kun har 1 ydre væg, så det burde jo virke fint nok. 
+Når jeg skal tjekke om et punkt er udenfor så kan jeg tjekke alle de tætteste rum og lave dobbelt winding number på dem. Du skal tænke på at ikke alle vægge du ser tilhører rummet specifikt, nogle af dem du ser tilhører andre rum. Der burde derfor ikke være noget problem. Det eneste er udfordringen med søjlerne og de små udstikkende vægge, de kan gøre sådan at den kan ramme dobbelt.
