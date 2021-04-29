@@ -1,84 +1,103 @@
-\section{Methods}
-\subsection{Design overview}
-
-\subsection{Plotting floor plans}
-It is always a good idea to get a good overview of the data. Since the data in this case is a visual representation of something physical - a floor plan - it made sense 
-to find a good way to transform the data from its original form to a plot visualising how the floor plan looks. 
-In this project a loader was made to load the data and plot it. It is worth saying that there are alternative pre-made loaders to do this. For example [IFC open shell loader, insert reference]. I chose to make my own loader because at the time it seemed like the straight forward thing to do. I was assured that the data was made in a certain way by Dalux, and since the data was given in a specific format and consisted of a small part of what a true IFC file consists of I decided to make my own. If the user wants to use this program for general IFC files it is simply a matter of using a already existing IFC loader, like the one mentioned earlier.
-- Explain that first we want to see how the building looks and what we are working with. It will make the rest of the process easier.
-\subsection{Loading the data}
-For each building there are a few files of interest used in this program.
-I made the script read\_write.py which takes the floor plan data as input and uses the xml.etree.ElementTree module to append the coordinates of each room to a list.
-\subsubsection{Preprocessing of the data set}
-Before working with the data. set some preprocessing had to be done. This included splitting the array values in appropriate ways and gathering them in sets of three such that the triangles could be formed. The coordinate\_processing module that I made took care of this.
-- Hashing
-\subsubsection{Removing redundant lines}
-The triangle structure of the data set forms a mesh that spans the entire floor plan. This does not do a great job of visualising the floor plan in an appropriate way. Some preprocessing has to be done to make the rooms in the floor plan distinguishable from each other. With a bit of intuition it can be seen that the lines to be removed are a part of more than one triangle, if e.g two triangles are used to span a room the line that should be removed is the one shared by both triangles. The way to remove the redundant lines is by using hashing. The idea here is to make a dictionary where each line is given a key and the same lines will have the same key. The way to make sure that the same lines will get the same key is by using hashing. Then all keys with more than one value (line) will be removed. The idea of using hashing to remove redundant lines was taken from this project (insert project reference).
-\subsubsection{Plotting the doors}
-When plotting the doors a challenge occurred, which was that a transformation had to be performed on the doors before they were aligned with the rest of the floor plan. 
-This was due to the way the data set was gathered and the reason for this is unknown. 
-Therefore the doors would have to be placed manually before further analysis could happen.
-
-test\cite{xu2017bim}
-
 
 
 \subsection{Spatial data structure framework}
-As explained in [insert reference] the spatial data structure is a useful tool to store spatial elements in a data structure. In this program different elements is stored in a spatial data structure. 
+As already explained the spatial data structure is a useful tool to store spatial elements in a data structure. In this program the following elements are stored in a spatial data structure:
 \begin{itemize}
     \item The rooms
     \item The walls
     \item The nodes
 \end{itemize}
-The usefulness of storing these three data types in a spatial data structure will make itself apparent throughout the method chapter of this report.
-In this section I will explain how I implemented this spatial data structure and why.
-To make the Rtree data structure was simply a matter of either implementing my own Rtree data structure or using an existing framework, the latter option was chosen.
-The framework used was the following [Insert reference to Rtree module]. Visit the documentation for more information on how this module works.
+The spatial data structure for the rooms will allow the program to access quickly which rooms each node belongs to, the usefulness of which will be discussed further here \ref{room_labels}.
+The structure for the walls is used to create a buffer zone between the walls and the rest of the building. It will be used to investigate which nodes in the grid graph will have to be removed due to being too close to a wall.
+Out of the three arguably the least necessary data structure is the one made for the nodes. This is used to such that the doors are connected to the closest node inside the same room as itself. 
 
-A side node, even though the Rtree module is designed to store multidimensional objects like rooms and wall, this data structure was also chosen to store the nodes.
-This might not be the optimal way to store point objects but to simplify the program and minimize the number of different frameworks used in the program the Rtree was also chosen for this datatype. Using another spatial data structure for the point objects is a very reasonable option.
+The reason these spatial data structure are suitable to use in this project is because they allow for faster nearest neighbour search. For each of the examples explained above the use of these datastructures has made accessing the nearest room,wall or node faster and therefore the overall program faster.
+Using this datastructure in this project is therefore not strictly necessary since an alternative solution that could be used is to iterate through every room,wall and node to find the nearest object. The datastructure is therefore not strictly necessary but highly advantagous to the alternative brute force solution. From a more intuitive perspective the idea of using spatial datastructures to solve a spatial problem also makes sense.  
+%Since this project works on solving a geometric problem that occurs in space it is appropriate to work with spatial datastructures. 
 
+There exist different kinds of spatial datastructures many of them work only with point objects. Due to the fact that 2 out of 3 of the objects that we wish to store in this project are multidimensional the R-tree data structure - which work with multidimensional objects - was chosen.
 
+% The below might be better of in an implementation section
+%To make the Rtree data structure was simply a matter of either implementing my own Rtree data structure class or using an existing framework, the latter option was chosen.
+The framework used to make the Rtree data structure, was the Rtree module from python \cite{rtree_module}. Visit this documentation for more information on how this module works.
 
-\subsection{Room labels}
-- The way it works is that we iterate through each node in the grid. We then find the nearest rooms to the grid. We find the area of the rooms sort them such that we test if the node is in the smallest room first. This is because the rooms are sometimes inside each other.
-For the room we find the boundaries of the room.
-For each of the 4 boundaries, always 4 since it is a rectangle boundary (R-tree) we check line intersection between the node point and the boundary point with each line in the room.
-If there is an intersection we jump to the other boundary, if there is no intersection we try another room.
-
-- you have to remember to have an increment on the edges.
- 
-
-\subsection{Making the grid graph}
-- Making a high resolution grid
-- How to represent nodes and graphs? Comparison of different ways and libraries
-- Having a spatial data structure for the nodes
-- Removing nodes too close to the walls
-- Removing nodes outside the building
-- Winding number algorithm and line intersection
-
-\subsection{Making the room graph}
-- Making the K means to place the room nodes.
-- First check if all room nodes can be reach, for some reason or another. 
-- Finding the shortest distance between all rooms, connecting them to each other
-
-\subsection{TSP}
-- Making a weighted graph of all the nodes, where the weights are the Euclidean distance between each node. Write that it is a undirected graph.
-- A section on the line intersection algorithm used for connecting the points
-- Using dijkstra's/A* to make a complete subgraph of all the relevant nodes, and how this problem is a bit different than the traditional tsp.
-- Removing double vertices to do the DFS traversal algorithm
-- Plotting the final solution
+Although the Rtree module is designed to store multidimensional objects like rooms and wall, this data structure was also chosen to store the node objects which are not multidimensional.
+This might not be the optimal way to store point objects but to simplify the program and minimize the number of different frameworks used in the program the Rtree was also chosen for this datatype. Using another spatial data structure for the point objects is a very reasonable alternative.
 
 
-\subsection{Bugs and challenges}
-- Doors not connected to room nodes
-- Data challenges: not knowing how many rooms to include
+
+\subsection{Room labels}\label{room_labels}
+In order to generate the room nodes of the room graph it is necessary to first label each grid node to the room it is inside of. 
+
+The way it works is that we iterate through each node in the grid. We then find the nearest rooms to the grid using the R-tree generated for the rooms. Sometimes due to the way the data is formatted a node can be inside multiple rooms at the same time. Therefore the program finds the area of the rooms and sort them such that the node is tested to be within the smallest room first. This is because the rooms are sometimes inside each other.
+When checking if the node is inside the room the ray casting algorithm is used together with line intersection. In theory it should be enough to check one direction to decide whether the node is within the room or not. This is not the case here however, mainly due to the fact that other elements are included in the floor plan. One example are pillars that can be present in the floor plan and could therefore interfere with the line intersection. 
+Therefore 4 directions are checked and a majority voting system is used to decide whether the node is inside or outside the room.
+If a node is not inside any rooms it is removed from the graph since this means that it is outside the building and therefore shouldn't be a part of the path under any circumstances.
+
+\begin{itemize}
+    \item Talk about why it is important and needed
+    \item How to make sure that the path doesn't go outside the building
+    \item Write about the special case where you wouldn't be able to remove outside nodes if there is a yard inside the building
+\end{itemize}
+
+
+\subsection{Node placement}
+Looking at the objective \ref{Objective} it is seen that the next step is to generate the room graph. 
+Different options existed for generating the room nodes that made up the room graph. One option and the option that was used in the end was to use a clustering algorithm to generate the nodes. Specifically the K-means algorithm.
+This was with the idea that finding an analytically optimal position for the room nodes would be cumbersome task compared to finding an approximate solution. Another way was to use convex decomposition. Autogenerate nodes.
+
+\begin{itemize}
+    \item the reason we need room nodes is not because we want the robot to take pictures at that spot but it is more that we want to make sure the robot visits certain areas or rooms. 
+    \item Write that when using the k means sometimes the centroids fall out of the room, in that case we just choose a random centroid in the room.
+    \item Write about different ways to place the room nodes, like taking the center point of the room, and why that is not always a good idea. Convex decomposition.
+\end{itemize}
+
+
+
+
 
 
 
 
 \begin{comment}
-\subsubsection{Line intersection}
+\subsection{Minimum spanning tree}
+This is a one line code that makes a minimum spanning tree given a network. This comes from the networkx framework. 
+The minimum spanning tree is needed to do the approximate solution of the tsp problem.
+
+\subsection{Solve TSP problem for subgraph using DFS traversal}
+This is again a one line of code, where a depth first search traversal is performed on the minimum spanning tree of the rooms. 
+
+The next step to finalize the tsp solution is to remove double vertices occuring when doing the depth first seach algorithm on the minimum spanning tree.
+
+
+
+The dfs list consists of node pairs with a 'from' node and a 'to' node.
+e.g
+(1,2), (2,3), (3,4) etc.
+We can have that the 'from' node of the current node pair is not the 'to' node of the previous node pair. 
+e.g
+(1,2), (1,3)
+When this happens we want to make i a shortcut such that it goes directly from 2 to 3 without going back to one.
+
+
+We do this by having a for loop that runs through all node pairs in the list of the depth first search edges. 
+If the 'to' node in the previous node pair
+is not the same as the from node in the next node pair then the new 'from' node should be the previous 'to' node and the new 'to' node
+should be the current 'to' node.
+For example if we have (1,2), (1,3) then because we go back to 1 we change it to (1,2), (2,3).
+
+
+\begin{itemize}
+    \item Making a weighted graph of all the nodes, where the weights are the Euclidean distance between each node. Write that it is a undirected graph.
+    \item A section on the line intersection algorithm used for connecting the points
+    \item Using dijkstra's/A* to make a complete subgraph of all the relevant nodes, and how this problem is a bit different than the traditional tsp.
+    \item Removing double vertices to do the DFS traversal algorithm
+    \item Plotting the final solution
+    \item Checking for connectivity between the room nodes
+    \item Write about the different ways you wanted to plot the path. Not just Distance field but the alternatives. Corner approach. Various sized of grid, like in the video game video.
+\end{itemize}
+
+\subsection{Line intersection}
 When determining whether to points on a map are traversable some sort of line intersection algorithm is used. Without using
 line intersection the program wouldn't be able to detect whether there are walls between two points, and it would therefore always
 choose the shortest distance between two points to be a straight line, regardless if it passes through walls or not. 

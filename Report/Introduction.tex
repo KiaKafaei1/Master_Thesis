@@ -1,50 +1,76 @@
-\section{Introduction}
-Robots has been a thing of the future for a very long time being something only depicted in Hollywood movies with not much basis in reality. This fact is slowly changing and now we are seeing robots that are slowly looking like stuff from movies. 
-The spot robot from Boston dynamics is the newest example of this. The spot robot is a yellow quadruped robot which literally looks like something taken from a movie.[insert reference to the black mirror episode].
+Robots have been a thing of the future for a very long time being something only depicted in Hollywood movies with not much basis in reality. This fact is slowly changing and we are now seeing robots that are looking more and more like stuff from movies. 
+The spot robot from Boston Dynamics is the newest example of this. The Spot robot is a yellow quadruped robot that looks like something taken from a show.\cite{black_mirror}
 
-At the same time the construction business needs a robot 
+The construction industry is following this trend and we are already seeing uses of the construction industry leveraging the Spot robot for different uses \cite{spot_construction}. This leads us to the motivation of this project.
+%\begin{itemize}
+%    \item Explain about the construction business
+%    \item At the same time the construction business needs a robot 
+%\end{itemize}
 
-A lot of uses are being found for the robot one of which is in the construction industry. Which leads us to the motivation of this project.
+ 
+
+%A lot of uses are being found for the robot one of which is in the construction industry. Which leads us to the motivation of this project.
 
 
 \section{Motivation}
-The project is being worked on in collaboration with Dalux which is a software company that makes BIM models (Building information modelling) for entrepreneurs making the construction process more manageable for them. 
-Dalux has a desire to help the entrepreneurs get a better overview of what is being done on their construction site on a day to day basis; is a new wall being constructed, are some tubes being assembled etc. 
-Dalux essentially wants to give a temporal overview of the construction process to the entrepreneur, while also precisely showing the entrepreneur if the work being done by his employees or contractors are done correctly.
-He can use this information to hold his employees or contractors accountable; is the wall being placed where it should be placed, are the tubes being assembled correctly.
+The project was worked on in collaboration with Dalux which is a software company that makes BIM models (Building information modeling) for entrepreneurs which helps make the construction process more manageable for them. 
+One of Dalux's new missions has been to help entrepreneurs get a better overview of what is being done on their construction site on a day-to-day basis; is a new wall being constructed, are some tubes being assembled, etc. 
+Dalux essentially wants to give a temporal overview of the construction process to the entrepreneur, while also precisely showing the entrepreneur if the work being done by his employees or contractors is done correctly.
+The entrepreneur can use this information to hold his employees or contractors accountable; is the wall being placed where it should be placed, are the tubes being assembled correctly.
 
 At present Dalux has to hire an expensive architect to walk around the construction site and check that everything is going according to plan and that there are not any errors occurring. Needless to say this is a costly affair.
-This is where the SPOT robot enters the picture. Because if this process could be automated such that a robot could walk around a construction site instead and do point scans, send the data directly to Dalux’ software, that would be of great benefit for Dalux. 
+This is where the Spot robot enters the picture, because if this process could be automated such that a robot could walk around a construction site and do point scans instead of a person, and send the data directly to Dalux’ software, that would be of great benefit for Dalux. 
+The advantage of using Spot compared to using cheap labor to do this task is that Spot would be able to perform these actions at all hours of the day and with a higher frequency. Its route would also be very deterministic leaving little room for variation in what will be scanned.
+Furthermore doing pathfinding for Spot will allow for potentially many other uses of Spot on the construction site and to quote Dalux "This will be the first step in a row of R&D-projects where Spot will be used to interact with the physical world".
 
-This might save them a lot of effort and money, since a robot has a big upfront cost but a very small hourly work cost.
+%\begin{itemize}
+    %\item This might save them a lot of effort and money, since a robot has a big upfront cost but a very small hourly work cost.
+    %\item Write the comment that anders gave you: Du har helt ret i at man kunne ansætte billig arbejdskraft til at udføre denne opgave. Fordelen ved robotten er at den vil kunne udgøre disse gennemgange på tider af døgnet hvor byggepladsen ellers er tom, og så vil dens arbejdsgang være meget deterministisk. Man vil også kunne indsamle data med en højere frekvens. Dette er selvfølgelig også muligt med billig arbejdskraft, men når først man har fået denne proces automatiseret med Spot, så vil man måske også finde på nye områder hvor Spot kan hjælpe Så det er også bare for at lave første skridt i en række af R&D-projekter hvor man anvender spot til at interagere med den fysiske verden.
+    %\item Philosophy for this section: "Say not what you are going to do but why"
+%\end{itemize}
 
 
 \section{Objective}\label{Objective} 
-The objective of this project is to make a path-finding algorithm for the spot robot from Boston dynamics on the floor of a given building. The program should be able to get as input CAD data for a one level floor-plan of a building and should from that, output the path that the robot should traverse. The path should take into consideration the dimensions of the robot, such that it does not walk into walls or such that the planned path is not too narrow for the robot.
+The objective of this project is to make a 2D path-finding algorithm for the spot robot from Boston dynamics on the floor of a given building. The program should be able to get as input BIM data for a one level floor-plan of a building and should from that, output the path that the robot should traverse. The path should take into consideration the dimensions of the robot, such that it does not walk into walls or such that the planned path is not too narrow for the robot.
 
+The path should be in the form of a loop, such that the start and end destinations of the path are the same - making it easy for Spot to be put into the charger the following morning.
 
-The path should be in the form of a loop, such that the start and end destinations of the path are the same - such that the robot can be put into the charger the following morning.
-
-
-The path should furthermore guarantee that the robot visits every room on the floor.
+The path should furthermore guarantee that Spot visits every room on the floor.
 \\\\
 \textbf{How will this be done?}
 %\subsubsection{How will this be done?}
 \\
-It makes sense to split this objective into 3 distinct problem definitions:
+The objective will be split in three distinct problem definitions:
 \begin{enumerate}
-    \item \textbf{Making a graph - which we will denote “grid”- graph - from the input data.} From the CAD input we will sample nodes with a given resolution resulting in a discretized floor plan, denoted “grid”-graph. The walls of the floor plan will also be included for visual purposes. The graph is processed in such a way that the robot will always be able to traverse between two nodes in the floor plan if the nodes are connected; either directly or through intermediary nodes.
+    \item \textbf{Making a graph - which we will denote “grid”- graph - from the input data.} From the BIM input we will sample nodes with a given resolution resulting in a discretized floor plan, denoted “grid”-graph. %The walls of the floor plan will also be included for visual purposes. 
+    The graph is processed in such a way that the robot will always be able to traverse between two nodes in the floor plan if the nodes are connected; either directly or through intermediary nodes.
     
     \item \textbf{Making a subgraph - which we will denote “room”-graph - from the “grid”-graph.}
     The essential nodes that the robot must visit - to get to every room - will be generated, denoted as “room” nodes.
 
-    A subgraph of the “grid”-graph will be generated where only the “room” nodes are included, denoted “room”- graph.
-    An optimal graph traversal algorithm (e.g A* ) will be used to find the shortest distance between each node in this subgraph. An important property of this subgraph will be that it is fully connected; this means that all room nodes are connected to each other.
+    A graph will be generated where only the “room” nodes are included, denoted “room”- graph.
+    An optimal graph traversal algorithm will be used to find the shortest distance between each node in this subgraph. An important property of this subgraph will be that it is fully connected; this means that all room nodes are connected to each other.
 
     
     \item \textbf{Making a path that traverses through all “room” nodes in the “grid” graph.} We will find an approximate solution to the traveling salesman problem on the “room” graph. This solution will be used to generate a path on the “grid”-graph where each “room” node is visited at least once.
 \end{enumerate}
 
+
+\subsection{Assumptions}
+90 minutes of walk time that Spot has is enough for it to traverse around any floor-plan given. The scope of this project is not to take into account the battery lifetime of the robot when doing the pathfinding. It is assumed that 90 minutes should be enough to traverse all around the floor plan and back. 
+
+- optimal nodes
+
+\subsection{Setting priorities}\label{setting_priorities}
+%\subsection{The precise objective of the project}
+When doing a project such as this one where there are many alternative ways to solve sub-problems each having their own set of pros and cons, it is important to have a very clear and precise objective such that one knows which features are important to consider and which are not important. One question to ask is the following: is it necessary that the robot finds the optimal path between the nodes? 
+For the purposes of this project the important thing is not that the robot finds the optimal path necessarily but rather that it gets to walk around the entire building i.e all the rooms in the floor plan. More precisely put the objective is for the robot to do point scans of as much of the building as possible. %and not walk around as much of the building as possible.
+
+The reason finding the optimal route around the room nodes of the building is not necessary is that we don't really pay the robot by the hour as we would do if a human were to do the walk.
+Whether it takes the robot 30 minutes or 50 minutes to walk around the building is not really important. This knowledge will later allow us to use approximate solutions to the traveling salesman problem, more on that in \ref{TSP}.
+Making the program robust is an important goal of this project. This means that we would like to make the program such that it can tolerate a wide variety of different floor-plans.
+This knowledge and realisation will help us in deciding which algorithm and approach to use when trying to solve different aspects of the problems. %It means that we would rather have that the robot finds a way to get around the building with certainty rather than it having to walk an optimal route.
+Since the program is not supposed to run in real time, performance does not play an important factor when making the program. For the same reason this project will not go into detail with analysing performances of various algorithms or heuristics. 
 
 
 

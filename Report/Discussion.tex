@@ -1,12 +1,61 @@
-\section{Results}
 
 
-\section*{Discussion}
+
+
+
+\section{Discussion}
 (Comment on your results, explain what those results mean, interpret the results in a wider context. Also indicate which results were expected or unexpected, and provide an explanation for the unexpected results)
 
+\subsection{Special cases where door heights are really close to each other or when room elevation heights are close to each other}
+
+\subsection{Bad door matching in building 127 elev 0.31}
+
+\subsection{Not removing a interrupting wall of RAC building}
+
+\subsection{Removing walls to the outside}
+
+\subsection{When to use minimum elevation or clippingheight}
+
+
+\subsection{When to translate the data and when not to}
+
+\subsection{A problem Where the translation of the doors will happen on one floor but not on the other due to the way that it checks for values.}
+
+\subsection{narrow corriodors can block of the rest of the building with regards to nodes}
+
+\subsection{Use for general IFC data}
+- You can use the ifc open shell for general ifc data
+
+\subsection{Problems with the data}
+- Elevation not matching
+- Walls where there shouldn't be walls
+
+
+\subsection{Optimal node placement}
+- Talk about different approaches to doing optimal node placement
+
+\section{Conclusion}
+
+\section{Future work}\label{Future_work}
+\subsection{Walking up stairs}
+The Spot robot has the ability to walk up and down stairs. A natural progression of this project is therefore to program Spot to walk up or down stairs to different floors. This way Spot can traverse around different floors of the building.
+
+\subsection{Using a more complex algorithm for placing room nodes}
+Another focus area for further development of this project is to develop a better method for placing the room nodes. At the moment the room nodes are placed using the K-means algorithm which is not an optimal placement strategy. Experimenting with different placement strategies and analysing the amount of coverage given for each is an interesting problem for further work.
+
+\subsection{Taking into consideration the battery time for the robot when} developing the route
+Furthermore to take into consideration the battery time of the robot when developing the route is also an area worth looking at for future work. In this project it is assumed that the battery time of the robot is sufficient for it to traverse one entire floor plan, but this assumption has not been put under scrutiny. It could be interesting to do some analysis of battery time compared with the route traversed. Finding the optimal path around the building and taking into consideration the battery capacity of Spot becomes especially when wanting for it to traverse multiple floor plans.
+
+In further works of the project the program could have a recursive structure checking if the robot can actually traverse the floor plan and then prioritising which rooms it should traverse if not.
+
+
+\subsection{Doing the actual programming of the robot}
+This is part one of a 2 part project series where the second part of the project will be actually programming Spot to traverse the path generated in this part of the project.
+
+
+
+
 \begin{comment}
-
-
 \subsection{Grid vs graph connectivity}
 Explain
 \begin{itemize}
